@@ -4,45 +4,46 @@
 
 @section('content')
 <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-white rounded-lg shadow-lg p-8">
-        <div class="mb-6">
-            <h1 class="text-3xl font-bold text-gray-800">💌 Send Heart Connection</h1>
-            <p class="text-gray-600 mt-2">Invite someone special to create a shared love journal together.</p>
+    <div class="bg-white/90 backdrop-blur-sm rounded-2xl card-shadow p-10">
+        <div class="text-center mb-8">
+            <div class="text-7xl mb-4">💌</div>
+            <h1 class="text-4xl font-bold text-rose mb-3">Send Heart Connection</h1>
+            <p class="text-gray-600 text-lg">Invite someone special to create a shared love journal together</p>
         </div>
 
-        <form action="{{ route('heart-connections.store') }}" method="POST">
+        <form action="{{ route('heart-connections.store') }}\" method="POST" class="space-y-6">
             @csrf
             
-            <div class="mb-6">
-                <label for="receiver_email" class="block text-gray-700 font-medium mb-2">
-                    Partner's Email Address
+            <div>
+                <label for="receiver_email" class="block text-gray-700 font-semibold mb-3 text-lg">
+                    💕 Partner's Email Address
                 </label>
-                <input type="email" name="receiver_email" id="receiver_email" value="{{ old('receiver_email') }}" required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 @error('receiver_email') border-red-500 @enderror"
+                <input type="email" name="receiver_email" id="receiver_email" value="{{ old('receiver_email') }}\" required
+                    class="w-full px-5 py-4 border-2 border-rose rounded-xl focus:outline-none focus:border-rose focus:ring-2 focus:ring-pink-200 transition text-lg @error('receiver_email') border-red-400 @enderror"
                     placeholder="partner@example.com">
                 @error('receiver_email')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-sm mt-2 font-medium">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-6">
-                <label for="message" class="block text-gray-700 font-medium mb-2">
-                    Personal Message (Optional)
+            <div>
+                <label for="message" class="block text-gray-700 font-semibold mb-3 text-lg">
+                    ✨ Personal Message (Optional)
                 </label>
-                <textarea name="message" id="message" rows="4"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 @error('message') border-red-500 @enderror"
-                    placeholder="Add a sweet message...">{{ old('message') }}</textarea>
+                <textarea name="message" id="message" rows="5"
+                    class="w-full px-5 py-4 border-2 border-rose rounded-xl focus:outline-none focus:border-rose focus:ring-2 focus:ring-pink-200 transition text-lg @error('message') border-red-400 @enderror"
+                    placeholder="Add a sweet message to make it special...">{{ old('message') }}</textarea>
                 @error('message')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-sm mt-2 font-medium">{{ $message }}</p>
                 @enderror
-                <p class="text-sm text-gray-500 mt-1">Maximum 500 characters</p>
+                <p class="text-sm text-gray-500 mt-2">Maximum 500 characters</p>
             </div>
 
-            <div class="flex space-x-4">
-                <button type="submit" class="flex-1 heart-gradient text-white font-bold py-3 rounded-lg hover:opacity-90 transition">
+            <div class="flex space-x-4 pt-4">
+                <button type="submit" class="flex-1 heart-gradient text-white font-bold py-4 rounded-xl hover:opacity-90 transition transform hover:scale-105">
                     Send Heart Connection 💕
                 </button>
-                <a href="{{ route('dashboard') }}" class="flex-1 bg-gray-300 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-400 transition text-center">
+                <a href="{{ route('dashboard') }}\" class="flex-1 bg-gray-300 text-gray-700 font-bold py-4 rounded-xl hover:bg-gray-400 transition text-center leading-none flex items-center justify-center">
                     Cancel
                 </a>
             </div>

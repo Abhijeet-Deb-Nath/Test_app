@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Couple extends Model
 {
@@ -57,5 +59,29 @@ class Couple extends Model
     public function hasUser(User $user): bool
     {
         return $this->user_one_id === $user->id || $this->user_two_id === $user->id;
+    }
+
+    /**
+     * Get all separation requests for this couple.
+     */
+    public function separationRequests(): HasMany
+    {
+        return $this->hasMany(HeartSeparation::class);
+    }
+
+    /**
+     * Get the pending separation request for this couple.
+     */
+    public function pendingSeparation(): ?HeartSeparation
+    {
+        return $this->separationRequests()->where('status', 'pending')->first();
+    }
+
+    /**
+     * Check if there's a pending separation request.
+     */
+    public function hasPendingSeparation(): bool
+    {
+        return $this->pendingSeparation() !== null;
     }
 }

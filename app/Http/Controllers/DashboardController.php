@@ -16,7 +16,8 @@ class DashboardController extends Controller
         $couple = $user->couple();
         $partner = $user->partner();
         $pendingRequests = $user->pendingHeartConnections;
+        $pendingSeparation = $couple ? $couple->pendingSeparation() : null;
 
-        return view('dashboard', compact('user', 'couple', 'partner', 'pendingRequests'));
+        return view('dashboard', compact('user', 'couple', 'partner', 'pendingRequests', 'pendingSeparation'));
     }
 }
