@@ -4,6 +4,13 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Back Button -->
+    <div class="mb-6">
+        <a href="{{ route('dashboard') }}" class="text-rose hover:underline font-medium flex items-center">
+            ← Back to Shared Space
+        </a>
+    </div>
+
     <div class="mb-10 flex justify-between items-center">
         <div>
             <h1 class="text-5xl font-bold text-rose mb-2">Memory Treasures 📸</h1>

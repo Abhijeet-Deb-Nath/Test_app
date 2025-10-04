@@ -4,6 +4,13 @@
 
 @section('content')
 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Back Button -->
+    <div class="mb-6">
+        <a href="{{ route('memories.index') }}" class="text-rose hover:underline font-medium flex items-center">
+            ← Back to Memory Treasures
+        </a>
+    </div>
+
     <div class="bg-white/90 backdrop-blur-sm rounded-2xl card-shadow p-10">
         <div class="text-center mb-8">
             <div class="text-7xl mb-4">✨</div>
