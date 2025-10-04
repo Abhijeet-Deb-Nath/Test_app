@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HeartConnectionController;
 use App\Http\Controllers\HeartSeparationController;
+use App\Http\Controllers\MemoryTreasureController;
 
 // Guest routes
 Route::middleware('guest')->group(function () {
@@ -37,6 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/heart-separations/{heartSeparation}/approve', [HeartSeparationController::class, 'approve'])->name('heart-separations.approve');
     Route::post('/heart-separations/{heartSeparation}/decline', [HeartSeparationController::class, 'decline'])->name('heart-separations.decline');
     Route::delete('/heart-separations/{heartSeparation}/cancel', [HeartSeparationController::class, 'cancel'])->name('heart-separations.cancel');
+    
+    // Memory Treasure routes
+    Route::get('/memories', [MemoryTreasureController::class, 'index'])->name('memories.index');
+    Route::get('/memories/create', [MemoryTreasureController::class, 'create'])->name('memories.create');
+    Route::post('/memories', [MemoryTreasureController::class, 'store'])->name('memories.store');
+    Route::get('/memories/{memory}', [MemoryTreasureController::class, 'show'])->name('memories.show');
+    Route::delete('/memories/{memory}', [MemoryTreasureController::class, 'destroy'])->name('memories.destroy');
+    Route::post('/memories/{memory}/reflections', [MemoryTreasureController::class, 'storeReflection'])->name('memories.reflections.store');
+    
+    // Memory Comment routes
+    Route::post('/memories/{memory}/comments', [MemoryTreasureController::class, 'storeMemoryComment'])->name('memories.comments.store');
+    Route::post('/reflections/{reflection}/comments', [MemoryTreasureController::class, 'storeReflectionComment'])->name('reflections.comments.store');
+    Route::delete('/comments/{comment}', [MemoryTreasureController::class, 'destroyComment'])->name('comments.destroy');
+    Route::delete('/reflections/{reflection}', [MemoryTreasureController::class, 'destroyReflection'])->name('reflections.destroy');
 });
 
 

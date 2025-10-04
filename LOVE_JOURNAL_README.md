@@ -26,6 +26,19 @@ A respectful way to end a couple relationship:
 - Automatically deletes all shared content upon approval
 - Warning system to prevent accidental separations
 
+### ✅ Memory Treasures System (NEW!)
+A beautiful shared photo album and journal for couples:
+- **Create Memories**: Store precious moments with heading, optional subtitle, story, and date
+- **Multiple Media Types**:
+  - 📝 Text-only memories for written stories
+  - 🎵 Audio memories (MP3, WAV, OGG) up to 100MB
+  - 🎬 Video memories (MP4, AVI, MOV, WMV) up to 100MB
+- **Nostalgic Reflections**: Both partners can add thoughts about each memory
+- **Memory Gallery**: Beautiful grid view of all shared memories
+- **Track Creators**: See who created each memory
+- **Interactive Details**: View full memory with media playback
+- **Local Storage**: Files stored in `storage/app/public` for localhost use
+
 ### ✅ Elegant Dashboard
 - **Single Users**: 
   - Send heart connection requests
@@ -35,8 +48,8 @@ A respectful way to end a couple relationship:
 - **Couples**: 
   - View partner information
   - Anniversary date display (if set)
+  - Access to Memory Treasures gallery
   - Pending separation request notifications
-  - Placeholder for future features (journal, memories)
   - Option to request heart separation
 
 ### ✅ Beautiful UI Design
@@ -60,6 +73,8 @@ A respectful way to end a couple relationship:
 2. **couples** - Stores couple relationships with optional anniversary date and couple name
 3. **heart_connections** - Manages connection requests with status tracking (pending, accepted, declined)
 4. **heart_separations** - Manages separation requests with mutual consent system (pending, approved, declined)
+5. **memory_treasures** - Stores shared memories with text/audio/video content
+6. **memory_reflections** - Stores nostalgic thoughts and reflections about memories
 
 ## 🎨 Design Philosophy
 
@@ -78,11 +93,15 @@ The application features an elegant, loving design with:
 - `Couple` - Couple relationship with helper methods and separation tracking
 - `HeartConnection` - Heart connection request management
 - `HeartSeparation` - Heart separation request management with approval workflow
+- `MemoryTreasure` - Shared memory storage with media support
+- `MemoryReflection` - Nostalgic thoughts and reflections about memories
 
 ### Controllers
 - `AuthController` - Handles registration, login, and logout
 - `DashboardController` - Manages the main dashboard view with couple/single states
 - `HeartConnectionController` - Manages heart connection requests
+- `HeartSeparationController` - Manages heart separation requests with mutual consent
+- `MemoryTreasureController` - Handles memory creation, viewing, and reflections
 - `HeartSeparationController` - Manages heart separation requests with mutual consent
 
 ### Views
@@ -90,6 +109,7 @@ The application features an elegant, loving design with:
 - **Dashboard**: Conditional content based on relationship status
 - **Heart Connections**: Request form with message capability
 - **Heart Separations**: Separation request form with warnings
+- **Memory Treasures**: Gallery view, creation form, and detailed memory pages
 - **Layout**: Master layout with floating hearts, navigation, and alerts
 
 ## 📱 How It Works
@@ -104,6 +124,22 @@ The application features an elegant, loving design with:
    - Request is sent and appears in partner's dashboard
    
 3. **Accept Connection**: 
+   - Receiver views request with message on dashboard
+   - Can accept or decline
+   - Upon acceptance, couple space is created
+   
+4. **Couple Space & Memory Treasures**: 
+   - Shared dashboard showing partner information
+   - Access to Memory Treasures gallery
+   - Create memories with:
+     - Text stories
+     - Audio recordings (up to 100MB)
+     - Video clips (up to 100MB)
+   - Add nostalgic reflections to any memory
+   - View who created each memory
+   - See all reflections from both partners
+   
+5. **Request Separation**: 
    - Receiver views request with message on dashboard
    - Can accept or decline
    - Upon acceptance, couple space is created

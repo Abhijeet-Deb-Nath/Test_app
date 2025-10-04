@@ -84,4 +84,20 @@ class Couple extends Model
     {
         return $this->pendingSeparation() !== null;
     }
+
+    /**
+     * Get all memory treasures for this couple.
+     */
+    public function memoryTreasures(): HasMany
+    {
+        return $this->hasMany(MemoryTreasure::class);
+    }
+
+    /**
+     * Get memory treasures ordered by story date (newest first).
+     */
+    public function memories()
+    {
+        return $this->memoryTreasures()->orderBy('story_date', 'desc');
+    }
 }

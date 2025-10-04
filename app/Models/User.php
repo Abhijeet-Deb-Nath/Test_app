@@ -15,6 +15,11 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * Cached couple relationship
+     */
+    protected $coupleCache;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
@@ -53,9 +58,13 @@ class User extends Authenticatable
      */
     public function couple(): ?Couple
     {
-        return Couple::where('user_one_id', $this->id)
-            ->orWhere('user_two_id', $this->id)
-            ->first();
+        // Cache the result to avoid multiple queries
+        if (!isset($this->coupleCache)) {
+            $this->coupleCache = Couple::where('user_one_id', $this->id)
+                ->orWhere('user_two_id', $this->id)
+                ->first();
+        }
+        return $this->coupleCache;
     }
 
     /**

@@ -67,19 +67,19 @@
             @endif
             
             <div class="grid md:grid-cols-2 gap-6 mt-8">
-                <div class="rose-gradient rounded-xl p-6 text-center">
-                    <div class="text-5xl mb-3">📔</div>
-                    <h3 class="text-xl font-bold text-rose mb-2">Shared Journal</h3>
-                    <p class="text-gray-600 mb-4">Write your love story together</p>
-                    <button class="btn-soft-rose px-6 py-2 rounded-lg font-medium" disabled>
-                        Coming Soon
-                    </button>
-                </div>
+                <a href="{{ route('memories.index') }}" class="rose-gradient rounded-xl p-6 text-center hover:shadow-lg transition transform hover:scale-105">
+                    <div class="text-5xl mb-3">�</div>
+                    <h3 class="text-xl font-bold text-rose mb-2">Memory Treasures</h3>
+                    <p class="text-gray-600 mb-4">Your shared photo album & journal</p>
+                    <span class="btn-soft-rose px-6 py-2 rounded-lg font-medium inline-block">
+                        View Memories
+                    </span>
+                </a>
 
                 <div class="rose-gradient rounded-xl p-6 text-center">
-                    <div class="text-5xl mb-3">📸</div>
-                    <h3 class="text-xl font-bold text-rose mb-2">Memory Lane</h3>
-                    <p class="text-gray-600 mb-4">Share special moments</p>
+                    <div class="text-5xl mb-3">�</div>
+                    <h3 class="text-xl font-bold text-rose mb-2">Special Dates</h3>
+                    <p class="text-gray-600 mb-4">Important moments & reminders</p>
                     <button class="btn-soft-rose px-6 py-2 rounded-lg font-medium" disabled>
                         Coming Soon
                     </button>
